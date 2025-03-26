@@ -1,0 +1,27 @@
+{
+  "name": "chess_analyse_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "devStart": "nodemon serner.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ak-210/Chess_Analyse_Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ak-210/Chess_Analyse_Backend/issues"
+  },
+  "homepage": "https://github.com/ak-210/Chess_Analyse_Backend#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
