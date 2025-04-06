@@ -1,6 +1,3 @@
-export const LICHESS_BASE = "https://lichess.org"
-export const LICHESS_POSITION = "/api/cloud-eval"
-
 export const SERVER_ERROR = {
 	message: "Something went Wrong with API"
 }
