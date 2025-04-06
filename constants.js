@@ -1,3 +1,5 @@
+export const DEFAULT_DEPTH = "18"
+
 export const SERVER_ERROR = {
 	message: "Something went Wrong with API"
 }

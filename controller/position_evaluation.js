@@ -1,12 +1,12 @@
 import { Chess } from "chess.js"
 import { FEN_ERROR, SERVER_ERROR } from "../constants.js"
-import { FetchPositionReport } from "./CTA/fetch_position_report.js"
+import { EvaluateFen } from "./evaluate_fen.js"
 
-export async function EvaluatePosition(fen)  {
+export async function EvaluatePosition(fen, depth) {
 	try {
 		const chess = new Chess(fen)
-		console.log(fen)
-		var positionReport = await FetchPositionReport(fen)
+		var positionReport = await EvaluateFen(fen, depth)
+			.catch(err => err)
 
 		return positionReport
 	} catch (error) {

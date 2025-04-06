@@ -1,39 +1,24 @@
+import { DEFAULT_DEPTH } from "../constants.js"
 import { FindWinPercentage } from "../controller/find_win_percentage.js"
 
 export class PositionReport {
-	constructor({ depth, evaluation, winPercentage, bestmove, bestmoveLine }) {
-		this.depth = depth
-		this.eval = evaluation
-		this.winPercentage = winPercentage
+	constructor({depth, evalReport, bestmove, bestmoveLine}) {
+		if (evalReport == null || bestmove == null || bestmoveLine == null)
+			throw new Error("Some Parameter in missing")
+
+		this.depth = depth || DEFAULT_DEPTH
+
 		this.bestmove = bestmove
-		this.bestmoveLine = bestmoveLine
-	}
+		this.bestmoveLine = bestmoveLine.toString().split(" ")
 
-	static fromJSON(json) {
-		const data = JSON.parse(json)
-		const [pvs] = data["pvs"]
-		let [bestmove, ...line] = pvs["moves"].split(" ")
-
-		if ("cp" in pvs) {
-			let cp = pvs["cp"]
-			return new PositionReport({
-				evaluation: cp/100,
-				winPercentage: FindWinPercentage(cp),
-				bestmove: bestmove,
-				bestmoveLine: line
-			})
-		} else if("mate" in pvs) {
-			var isWhiteWinning = pvs["mate"] >= 0
-			var posEval = (isWhiteWinning ? "" : "-") + "M" + Math.abs(pvs["mate"])
-			var winChance = isWhiteWinning ? 100 : 0
-
-			return new PositionReport({
-				depth: data.depth,
-				evaluation: posEval,
-				winPercentage: winChance,
-				bestmove: bestmove,
-				bestmoveLine: line
-			})
+		if (evalReport["type"] == "cp") {
+			let val = evalReport["value"]
+			this.eval = val / 100
+			this.winPercentage = FindWinPercentage(val)
+		} else if (evalReport["type"] == "mate") {
+			let val = evalReport["value"]
+			let isWhiteWinning = val >= 0
+			this.eval = (isWhiteWinning ? "" : "-") + "M" + Math.abs(val)
 		} else {
 			throw new TypeError("Wrong Evaluation")
 		}
