@@ -10,6 +10,6 @@ export async function EvaluatePosition(fen, depth) {
 
 		return positionReport
 	} catch (error) {
-		return FEN_ERROR
+		return FEN_ERROR // To catch error when initilasing fen
 	}
 }

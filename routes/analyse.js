@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const { EvaluatePosition } = require("../controller/position_evaluation")
-const { SERVER_ERROR, REQUEST_ERROR } = require("../constants.js")
+const { SERVER_ERROR, FEN_MISSING } = require("../constants.js")
 const { PositionReport } = require("../models/position_report")
 
 router.post("/position", async function (req, res) {
@@ -9,7 +9,7 @@ router.post("/position", async function (req, res) {
 	var depth = req.body.depth
 
 	if (fen == null) {
-		res.status(400).send("Request doesn't contain fen")
+		res.status(400).send(FEN_MISSING)
 	}
 
 	try {
@@ -17,10 +17,10 @@ router.post("/position", async function (req, res) {
 		if (positionReport instanceof PositionReport) {
 			res.json(positionReport)
 		} else {
-			res.status(400).send(positionReport.message)
+			res.status(400).message(positionReport.message || positionReport)
 		}
 	} catch (error) {
-		res.status(400).send(REQUEST_ERROR.message)
+		res.status(400).send(SERVER_ERROR)
 	}
 })
 
