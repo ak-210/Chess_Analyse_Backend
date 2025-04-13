@@ -1,5 +1,5 @@
 import { DEFAULT_DEPTH } from "../constants.js"
-import { FindWinPercentage } from "../controller/find_win_percentage.js"
+import { getWinPercentage } from "../controller/find_win_percentage.js"
 
 export class PositionReport {
 	constructor({depth, evalReport, bestmove, bestmoveLine}) {
@@ -14,7 +14,7 @@ export class PositionReport {
 		if (evalReport["type"] == "cp") {
 			let val = evalReport["value"]
 			this.eval = val / 100
-			this.winPercentage = FindWinPercentage(val)
+			this.winPercentage = getWinPercentage(val)
 		} else if (evalReport["type"] == "mate") {
 			let val = evalReport["value"]
 			let isWhiteWinning = val >= 0

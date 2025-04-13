@@ -1,11 +1,11 @@
 import { Chess } from "chess.js"
 import { FEN_ERROR, SERVER_ERROR } from "../constants.js"
-import { EvaluateFen } from "./evaluate_fen.js"
+import { evaluateFen } from "./evaluate_fen.js"
 
-export async function EvaluatePosition(fen, depth) {
+export async function evaluatePosition(fen, depth) {
 	try {
 		const chess = new Chess(fen)
-		var positionReport = await EvaluateFen(fen, depth)
+		var positionReport = await evaluateFen(fen, depth)
 			.catch(err => err)
 
 		return positionReport

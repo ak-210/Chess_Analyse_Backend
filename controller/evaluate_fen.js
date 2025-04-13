@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const stockfishPath = resolve(__dirname, '../chess_engine/stockfish');
 
-export function EvaluateFen(fen, depth = DEFAULT_DEPTH) {
+export function evaluateFen(fen, depth = DEFAULT_DEPTH) {
 	return new Promise((resolve, reject) => {
 		// const sfPath = path.resolve(__dirname, )
 		const stockfish = spawn(stockfishPath)

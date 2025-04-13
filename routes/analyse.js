@@ -1,9 +1,10 @@
-const express = require("express")
+import express from "express"
+import { getPositionAnalyses } from "./position_analyses.js"
+
 const router = express.Router()
-const { getPositionAnalyses } = require("./position_analyses.js")
 
 router.post("/position", getPositionAnalyses)
 
 router.post("/game", (req, res) => { })
 
-module.exports = router
+export default router
