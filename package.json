@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/ak-210/Chess_Analyse_Backend#readme",
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "chess.js": "^1.1.0",
