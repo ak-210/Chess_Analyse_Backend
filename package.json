@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "devStart": "nodemon server.js"
+    "start": "tsc && node ./dist/server.js",
+    "devStart": "tsc && nodemon ./dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ak-210/Chess_Analyse_Backend#readme",
   "devDependencies": {
+    "@types/express": "^5.0.1",
     "nodemon": "^3.1.9",
     "typescript": "^5.8.3"
   },

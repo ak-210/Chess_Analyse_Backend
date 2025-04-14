@@ -2,7 +2,7 @@ import { Chess } from "chess.js"
 import { FEN_ERROR, SERVER_ERROR } from "../constants.js"
 import { evaluateFen } from "./evaluate_fen.js"
 
-export async function evaluatePosition(fen, depth) {
+export async function evaluatePosition(fen:string, depth?:string) {
 	try {
 		const chess = new Chess(fen)
 		var positionReport = await evaluateFen(fen, depth)
