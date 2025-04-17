@@ -1,4 +1,7 @@
 .env
 node_modules
 test.rest
-dist
+dist/*
+!dist/chess_engine
+!dist/chess_engine/stockfish
+.vscode
